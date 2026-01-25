@@ -125,7 +125,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         </motion.div>
 
         {/* CTA Button */}
-        <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center">
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center justify-center">
           {/* Primary Button */}
           <motion.button
             className="flex items-center justify-center gap-2 bg-gradient-to-r from-space-500 to-cosmic-500 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-xs sm:text-lg font-medium hover:from-space-600 hover:to-cosmic-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 animate-glow"
