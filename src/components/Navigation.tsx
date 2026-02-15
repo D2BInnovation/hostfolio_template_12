@@ -28,7 +28,7 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
   const handleNavClick = (sectionId: string) => {
     dispatch(setActiveSection(sectionId));
     dispatch(toggleMenu());
-    
+
     // Smooth scroll to section
     const element = document.getElementById(sectionId);
     if (element) {
@@ -54,11 +54,10 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
           {navItems.map(({ id, label, icon: Icon }) => (
             <motion.button
               key={id}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
-                activeSection === id
-                  ? 'bg-space-600 text-white shadow-lg'
-                  : 'text-gray-300 hover:text-white hover:bg-white/10'
-              }`}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${activeSection === id
+                ? 'bg-space-600 text-white shadow-lg'
+                : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavClick(id)}
@@ -68,13 +67,25 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
             </motion.button>
           ))}
         </div>
+        {((data as any).resume || data.personal?.resume) && (
+          <motion.a
+            href={(data as any).resume || data.personal.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 text-gray-300 hover:text-white hover:bg-white/10"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Briefcase size={18} />
+            <span className="text-sm font-medium">Resume</span>
+          </motion.a>
+        )}
       </nav>
 
       {/* Mobile Navigation */}
       <motion.nav
-        className={`fixed inset-0 z-40 lg:hidden bg-black/95 backdrop-blur-md ${
-          isMenuOpen ? 'block' : 'hidden'
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden bg-black/95 backdrop-blur-md ${isMenuOpen ? 'block' : 'hidden'
+          }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: isMenuOpen ? 1 : 0 }}
         transition={{ duration: 0.3 }}
@@ -83,11 +94,10 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
           {navItems.map(({ id, label, icon: Icon }) => (
             <motion.button
               key={id}
-              className={`flex items-center space-x-4 px-8 py-4 rounded-full text-xl transition-all duration-300 ${
-                activeSection === id
-                  ? 'bg-space-600 text-white shadow-lg'
-                  : 'text-gray-300 hover:text-white hover:bg-white/10'
-              }`}
+              className={`flex items-center space-x-4 px-8 py-4 rounded-full text-xl transition-all duration-300 ${activeSection === id
+                ? 'bg-space-600 text-white shadow-lg'
+                : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleNavClick(id)}
@@ -96,6 +106,20 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
               <span className="font-medium">{label}</span>
             </motion.button>
           ))}
+          {(data as any).resume || data.personal?.resume ? (
+            <motion.a
+              href={(data as any).resume || data.personal.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-4 px-8 py-4 rounded-full text-xl transition-all duration-300 text-gray-300 hover:text-white hover:bg-white/10"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => dispatch(toggleMenu())}
+            >
+              <Briefcase size={24} />
+              <span className="font-medium">Resume</span>
+            </motion.a>
+          ) : null}
         </div>
       </motion.nav>
     </>

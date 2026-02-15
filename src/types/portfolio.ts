@@ -8,6 +8,7 @@ export interface Personal {
   linkedin: string
   github: string
   bio: string
+  resume?: string
 }
 
 export interface HeroButton {
