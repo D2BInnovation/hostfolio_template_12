@@ -69,4 +69,5 @@ export interface PortfolioData {
   experience: Experience[]
   projects: Project[]
   contact: Contact
+  resume?: string
 }

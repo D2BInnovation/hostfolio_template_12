@@ -67,9 +67,9 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
             </motion.button>
           ))}
         </div>
-        {((data as any).resume || data.personal?.resume) && (
+        {(data.resume || data.personal?.resume) && (
           <motion.a
-            href={(data as any).resume || data.personal.resume}
+            href={data.resume || data.personal.resume}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 text-gray-300 hover:text-white hover:bg-white/10"
@@ -106,9 +106,9 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
               <span className="font-medium">{label}</span>
             </motion.button>
           ))}
-          {(data as any).resume || data.personal?.resume ? (
+          {data.resume || data.personal?.resume ? (
             <motion.a
-              href={(data as any).resume || data.personal.resume}
+              href={data.resume || data.personal.resume}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-4 px-8 py-4 rounded-full text-xl transition-all duration-300 text-gray-300 hover:text-white hover:bg-white/10"
