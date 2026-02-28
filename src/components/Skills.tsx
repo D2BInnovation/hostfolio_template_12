@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { motion } from 'framer-motion';
 import type { PortfolioData } from '../types/portfolio';
 
@@ -6,14 +6,14 @@ interface SkillsProps {
   data: PortfolioData;
 }
 
-const Skills: React.FC<SkillsProps> = ({ data }) => {
+const Skills: FC<SkillsProps> = ({ data }) => {
   const skills = data.about.skills;
 
   return (
     <section id="skills" className="py-20 bg-gradient-to-br from-space-900 via-cosmic-900 to-nebula-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(120,119,198,0.1),_transparent_50%)]" />
-      
+
       <div className="relative z-10 container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -53,7 +53,7 @@ const Skills: React.FC<SkillsProps> = ({ data }) => {
         >
           <div className="w-20 h-20 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full"></div>
         </motion.div>
-        
+
         <motion.div
           className="absolute -bottom-10 -right-10 opacity-10"
           animate={{ rotate: -360 }}

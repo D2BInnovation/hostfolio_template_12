@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, Rocket, Download } from 'lucide-react';
 import AnimatedText from './AnimatedText';
@@ -9,7 +9,7 @@ interface HeroProps {
   data: PortfolioData;
 }
 
-const Hero: React.FC<HeroProps> = ({ data }) => {
+const Hero: FC<HeroProps> = ({ data }) => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {

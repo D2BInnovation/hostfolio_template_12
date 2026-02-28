@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { useScrollSpy } from './hooks/useScrollSpy';
@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 import portfolioData from '../data.json';
 import type { PortfolioData } from './types/portfolio';
 
-const AppContent: React.FC = () => {
+const AppContent: FC = () => {
   useScrollSpy();
 
   const data = portfolioData as PortfolioData;

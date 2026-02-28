@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Rocket, Star, Zap } from 'lucide-react';
 import type { PortfolioData } from '../types/portfolio';
@@ -7,7 +7,7 @@ interface AboutProps {
   data: PortfolioData;
 }
 
-const About: React.FC<AboutProps> = ({ data }) => {
+const About: FC<AboutProps> = ({ data }) => {
   const features = [
     {
       icon: Code,
@@ -35,7 +35,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
     <section id="about" className="min-h-screen py-20 bg-gradient-to-br from-gray-900 via-space-900 to-cosmic-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,_rgba(120,119,198,0.3),_transparent_50%)] bg-[radial-gradient(circle_at_80%_20%,_rgba(255,119,198,0.3),_transparent_50%)]" />
-      
+
       <div className="relative z-10 container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

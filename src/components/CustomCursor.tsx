@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCursorPosition } from '../redux/slices/uiSlice';
 import { RootState } from '../redux/store';
 
-const CustomCursor: React.FC = () => {
+const CustomCursor: FC = () => {
   const dispatch = useDispatch();
   const cursorRef = useRef<HTMLDivElement>(null);
   const trailRef = useRef<HTMLDivElement>(null);
@@ -14,7 +14,7 @@ const CustomCursor: React.FC = () => {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       dispatch(setCursorPosition({ x: clientX, y: clientY }));
-      
+
       if (cursorRef.current) {
         cursorRef.current.style.left = `${clientX}px`;
         cursorRef.current.style.top = `${clientY}px`;

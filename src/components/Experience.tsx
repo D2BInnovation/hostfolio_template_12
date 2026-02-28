@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, ExternalLink, Briefcase } from 'lucide-react';
 import type { PortfolioData } from '../types/portfolio';
@@ -7,7 +7,7 @@ interface ExperienceProps {
   data: PortfolioData;
 }
 
-const Experience: React.FC<ExperienceProps> = ({ data }) => {
+const Experience: FC<ExperienceProps> = ({ data }) => {
   const experiences = data.experience;
 
   const containerVariants = {

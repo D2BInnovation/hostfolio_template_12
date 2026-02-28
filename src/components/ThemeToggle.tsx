@@ -1,11 +1,11 @@
-import React from 'react';
+import { type FC } from 'react';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import { Sun, Moon } from 'lucide-react';
 import { RootState } from '../redux/store';
 import { toggleTheme } from '../redux/slices/uiSlice';
 
-const ThemeToggle: React.FC = () => {
+const ThemeToggle: FC = () => {
   const dispatch = useDispatch();
   const { theme } = useSelector((state: RootState) => state.ui);
 

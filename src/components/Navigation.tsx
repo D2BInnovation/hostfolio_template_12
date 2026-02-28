@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
@@ -10,7 +10,7 @@ interface NavigationProps {
   data: PortfolioData;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ data }) => {
+const Navigation: FC<NavigationProps> = ({ data }) => {
   const dispatch = useDispatch();
   const { activeSection, isMenuOpen } = useSelector((state: RootState) => state.ui);
 

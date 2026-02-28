@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import { motion } from 'framer-motion';
 
 interface AnimatedTextProps {
@@ -7,7 +7,7 @@ interface AnimatedTextProps {
   delay?: number; // Optional delay before animation starts (in ms)
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = '', delay = 0 }) => {
+const AnimatedText: FC<AnimatedTextProps> = ({ text, className = '', delay = 0 }) => {
   const [selectedText, setSelectedText] = useState('');
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);

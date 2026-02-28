@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FC } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { Send, CheckCircle, XCircle, Mail, Globe, Zap } from 'lucide-react';
@@ -11,38 +11,38 @@ interface ContactProps {
   data: PortfolioData;
 }
 
-const Contact: React.FC<ContactProps> = ({ data }) => {
+const Contact: FC<ContactProps> = ({ data }) => {
   const dispatch = useDispatch();
   const { formData, isSubmitting, submitStatus, errors } = useSelector((state: RootState) => state.contact);
 
   const validateForm = () => {
     const newErrors: any = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    
+
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     }
-    
+
     dispatch(setErrors(newErrors));
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     dispatch(setSubmitting(true));
-    
+
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id',
@@ -54,7 +54,7 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key'
       );
-      
+
       dispatch(setSubmitStatus('success'));
       setTimeout(() => {
         dispatch(resetForm());
@@ -75,7 +75,7 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
     <section id="contact" className="py-20 bg-gradient-to-br from-cosmic-900 via-space-900 to-nebula-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,_rgba(120,119,198,0.3),_transparent_50%)]" />
-      
+
       <div className="relative z-10 container mx-auto px-4 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -101,42 +101,42 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-           
-              <div className="professional-card rounded-2xl p-8 border border-white/10">
-                <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
-                
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-space-400 to-cosmic-400 rounded-full flex items-center justify-center">
-                      <Mail size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold">Email</h4>
-                      <p className="text-gray-300">{data.personal.email}</p>
-                    </div>
+
+            <div className="professional-card rounded-2xl p-8 border border-white/10">
+              <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
+
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-space-400 to-cosmic-400 rounded-full flex items-center justify-center">
+                    <Mail size={20} className="text-white" />
                   </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-space-400 to-cosmic-400 rounded-full flex items-center justify-center">
-                      <Globe size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold">Location</h4>
-                      <p className="text-gray-300">{data.personal.location}</p>
-                    </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Email</h4>
+                    <p className="text-gray-300">{data.personal.email}</p>
                   </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-space-400 to-cosmic-400 rounded-full flex items-center justify-center">
-                      <Zap size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold">Response Time</h4>
-                      <p className="text-gray-300">Usually within 24 hours</p>
-                    </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-space-400 to-cosmic-400 rounded-full flex items-center justify-center">
+                    <Globe size={20} className="text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Location</h4>
+                    <p className="text-gray-300">{data.personal.location}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-space-400 to-cosmic-400 rounded-full flex items-center justify-center">
+                    <Zap size={20} className="text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">Response Time</h4>
+                    <p className="text-gray-300">Usually within 24 hours</p>
                   </div>
                 </div>
               </div>
+            </div>
 
           </motion.div>
 
